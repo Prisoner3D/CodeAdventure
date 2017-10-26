@@ -23,14 +23,15 @@ public abstract class Room {
         this.explored = false;
     }
 
-    public Person[] getOccupants() {
+    public Person[] getOccupants() 
+    {
         return occupants;
     }
 
-    public void setOccupants(Person[] occupants) {
+    public void setOccupants(Person[] occupants) 
+    {
         this.occupants = occupants;
     }
-
     
     public void addOccupant(Person p)
     {
@@ -55,9 +56,4 @@ public abstract class Room {
     }
     
     public abstract void print();
-
-
-
-
-
 }

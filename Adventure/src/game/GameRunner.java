@@ -2,6 +2,7 @@ package game;
 
 import items.Item;
 import rooms.*;
+import utilities.Utilities;
 import people.Person;
 
 import java.util.Scanner;
@@ -41,13 +42,6 @@ public class GameRunner {
             String move = player1.chooseMove();
             Utilities.movePlayer(tech, player1,move);
             //gameOn = false;
-            
-
-
-
-
-
-
 
         }
 		in.close();

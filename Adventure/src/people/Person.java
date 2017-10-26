@@ -16,11 +16,6 @@ public abstract class Person {
 		this.age = age;
 		this.room = room;
 	}
-	
-	public String toString()
-	{
-		return "abc";
-	}
 
 	public Room getRoom() {
 		return this.room;
@@ -30,4 +25,8 @@ public abstract class Person {
 		this.room = room;
 	}
 
+	public String toString()
+	{
+		return "" + firstName + familyName + age + room.toString();
+	}
 }
