@@ -20,7 +20,7 @@ public abstract class Room {
         this.doors = doors;
         this.occupants = occupants;
         this.items = items;
-        this.explored = false;
+        this.explored = true;
     }
 
     public Person[] getOccupants() 

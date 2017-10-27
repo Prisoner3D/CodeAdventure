@@ -3,29 +3,40 @@ package game;
 import items.Item;
 import rooms.*;
 import utilities.Utilities;
+import people.Adventurer;
 import people.Person;
 
 import java.util.Scanner;
+
+import board.Board;
 
 public class GameRunner {
 
     public static void main (String[] args)
     {
-        Room[][] map = new Room[5][5];
-        for (int j = 0; j < map.length; j++)
+        Room[][] definedMap = Utilities.generateDefaultMap();
+        Board board = new Board(definedMap);
+        
+        board.printMap();
+        Adventurer player = new Adventurer("Bobby", "Johnson", 20, board.getmap()[0][0]);
+        player.print();
+        		/*
+        for (int j = 0; j < definedMap.length; j++)
         {
-        	Room[] row = map[j];
+        	Room[] row = definedMap[j];
             for (int i = 0; i<row.length;i++)
             {
                 boolean[] doors = {true,true,true,true};
                 Person[] people = {};
                 Item[] items = {};
-
-                row[i] = new Hallway(doors, people, items, i, j);
+                
+                row[i] = new Road(doors, people, items, i, j);
+                row[i].print();
             }
+            System.out.println();
 
-        }
-
+        } */
+/*
         School tech = new School(map);
 
 
@@ -45,6 +56,7 @@ public class GameRunner {
 
         }
 		in.close();
+		*/
     }
 
 }

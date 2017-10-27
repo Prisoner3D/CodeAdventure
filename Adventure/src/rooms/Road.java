@@ -3,22 +3,23 @@ package rooms;
 import people.Person;
 import items.Item;
 
-public class Hallway extends Room {
+public class Road extends Room {
 
-    public Hallway(boolean[] doors, Person[] people, Item[] items, int x, int y)
+    public Road(boolean[] doors, Person[] people, Item[] items, int x, int y)
     {
         super(doors, people, items, x, y);
     }
 
+	@Override
     public void print()
-    {
+    { /*
         if (getOccupants().length != 0)
         {
             System.out.print(getOccupants()[0].print());
-        }
-        else if (this.explored)
+        } */
+        if (this.explored)
         {
-            System.out.print("[ H ]");
+            System.out.print("[ X ]");
         }
         else
         {
@@ -30,7 +31,7 @@ public class Hallway extends Room {
     public String toString()
     {
     	boolean[] doors = this.getDoors();
-    	String response = "This room is a hallway. It has doors to the ";
+    	String response = "This is the street, you can go ";
     	if (doors[0])
     	{
     		response += "N";
