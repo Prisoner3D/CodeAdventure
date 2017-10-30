@@ -2,6 +2,7 @@ package game;
 
 import items.Item;
 import rooms.*;
+import utilities.Constants;
 import utilities.Utilities;
 import people.Adventurer;
 import people.Person;
@@ -14,12 +15,27 @@ public class GameRunner {
 
     public static void main (String[] args)
     {
-        Room[][] definedMap = Utilities.generateDefaultMap();
+    	Person player = new Adventurer("First", "Last", 123, null);
+        Room[][] definedMap = Utilities.generateDefaultMap(player);
         Board board = new Board(definedMap);
         
-        board.printMap();
-        Adventurer player = new Adventurer("Bobby", "Johnson", 20, board.getmap()[0][0]);
-        player.print();
+        boolean gameOn = true;
+        
+        
+        Scanner in = new Scanner(System.in);
+        while(gameOn)
+        {
+            System.out.println("Welcome, "); //Add name later.getFirstName());
+            board.printMap();
+            String x = in.nextLine();
+            if (x == "up")
+            {
+            	Utilities.changeRoom(player, Constants.UP, board.getmap());
+            }
+            //gameOn = false;
+
+        }
+		in.close();
         		/*
         for (int j = 0; j < definedMap.length; j++)
         {

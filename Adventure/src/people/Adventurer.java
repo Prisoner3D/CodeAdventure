@@ -12,4 +12,7 @@ public class Adventurer extends Person {
 		super(firstName, familyName, age, room);
 	}
 
+	public String print() {
+		return "[ * ]";
+	}
 }

@@ -29,4 +29,8 @@ public abstract class Person {
 	{
 		return "" + firstName + familyName + age + room.toString();
 	}
+
+	public String print() {
+		return "";
+	}
 }

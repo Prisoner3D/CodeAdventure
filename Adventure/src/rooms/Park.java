@@ -11,11 +11,11 @@ public class Park extends Room{
 
 	@Override
 	public void print()
-    { /*
+    {
         if (getOccupants().length != 0)
         {
             System.out.print(getOccupants()[0].print());
-        } */
+        } 
         if (this.explored)
         {
             System.out.print("[ P ]");
