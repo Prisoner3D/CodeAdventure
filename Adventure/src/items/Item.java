@@ -12,7 +12,8 @@ public abstract class Item {
 		this.decoy = decoy;
 	}
 	
-	public abstract tellAbout()
+	public String getAbout()
 	{
+		return about;
 	}
 }
