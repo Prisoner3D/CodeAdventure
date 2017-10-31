@@ -28,9 +28,21 @@ public class GameRunner {
             System.out.println("Welcome, "); //Add name later.getFirstName());
             board.printMap();
             String x = in.nextLine();
-            if (x == "up")
+            if (x.equals("up"))
             {
             	Utilities.changeRoom(player, Constants.UP, board.getmap());
+            }
+	    if (x.equals("down"))
+            {
+            	Utilities.changeRoom(player, Constants.DOWN, board.getmap());
+            }
+	    if (x.equals("left"))
+            {
+            	Utilities.changeRoom(player, Constants.LEFT, board.getmap());
+            }
+	    if (x.equals("right"))
+            {
+            	Utilities.changeRoom(player, Constants.RIGHT, board.getmap());
             }
             //gameOn = false;
 
