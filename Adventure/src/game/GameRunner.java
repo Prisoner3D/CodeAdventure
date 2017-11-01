@@ -32,14 +32,6 @@ public class GameRunner {
             if (x.equals("up"))
             {
             	Utilities.changeRoom(player, Constants.UP, board.getMap());
-            	for (int i = 0; i < player.getRoom().getOccupants().length;i++)
-                {
-                	if (player.getRoom().getOccupants()[i] instanceof Enemy)
-                	{
-                		Utilities.changeRoom(player,  -1 * Constants.LEFT, board.getMap());
-                		System.out.println("Oops room is locked");
-                	}
-                }
             }
             if (x.equals("down"))
             {
@@ -57,8 +49,8 @@ public class GameRunner {
             {
             	if (player.getRoom().getOccupants()[i] instanceof Enemy)
             	{
-            		Utilities.changeRoom(player,  -1 * Constants.LEFT, board.getMap());
-            		System.out.println("Oops room is locked");
+            		//Utilities.changeRoom(player,  -1 * Constants.LEFT, board.getMap());
+            		//System.out.println("Oops room is locked");
             	}
             }
             board.printMap();

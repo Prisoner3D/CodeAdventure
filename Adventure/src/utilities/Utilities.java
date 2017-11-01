@@ -27,14 +27,14 @@ public class Utilities {
             {
                 boolean[] doors = {true,true,true,true};
                 Person[] people = {new Enemy("Billy", "Joe", row[i] , row[i], "I'm an enemy!", 0, 10)};
-                System.out.println(people[0].getLevel());
+                //System.out.println(people[0].getLevel());
                 Item[] items = {};
 
                 if (i == x && j == y)
                 {
                 	people = new Person[] {player};
                 	player.setRoom(definedMap[i][j]);
-                	System.out.println(i + "," + j);
+                	//System.out.println(i + "," + j);
                 }
                 row[i] = new Road(doors, people, items, i, j);
             }
@@ -62,6 +62,20 @@ public class Utilities {
 		{
 			newX = x - 1;
 			newY = y;
+			for (int i = 0; i < player.getRoom().getOccupants().length;i++)
+            {
+            	if (player.getRoom().getOccupants()[i] instanceof Enemy)
+            	{
+            		if (fight(player,player.getRoom().getOccupants()[i]) == null)
+            		{
+            			break;
+            		}
+            		newX = x;
+            		newY = y;
+            		//if return is null,  set newX and newY to x and y respectively.
+            		System.out.println("Oops room is locked");
+            	}
+            }
 		}
 		else if (direction == Constants.RIGHT)
 		{
@@ -81,10 +95,25 @@ public class Utilities {
 		player.setPrevRoom(map[y][x]);
     	player.setRoom(map[newY][newX]);
     	System.out.println(newX + "," + newY);
+    	
+    	
 	}
 	
 	public static void changeToPrev(Person player)
 	{
 		player.setRoom(player.getPrevRoom());
+	}
+	
+	public static Person fight(Person player1, Person player2) {
+		if (player1.getLevel() >= player2.getLevel())
+		{
+			return player1;
+		}
+		else
+		{
+			//should delete player2 player2
+			player2.delete();
+			return null;
+		}
 	}
 }
