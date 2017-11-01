@@ -16,7 +16,7 @@ public class GameRunner {
 
     public static void main (String[] args)
     {
-    	Person player = new Adventurer("First", "Last", 123, null, 0);
+    	Person player = new Adventurer("First", "Last", null, null, 0, 0);
         Room[][] definedMap = Utilities.generateDefaultMap(player,Constants.DEFAULT_X,Constants.DEFAULT_Y);
         player.setRoom(definedMap[Constants.DEFAULT_X][Constants.DEFAULT_Y]);
         Board board = new Board(definedMap);
@@ -32,6 +32,14 @@ public class GameRunner {
             if (x.equals("up"))
             {
             	Utilities.changeRoom(player, Constants.UP, board.getMap());
+            	for (int i = 0; i < player.getRoom().getOccupants().length;i++)
+                {
+                	if (player.getRoom().getOccupants()[i] instanceof Enemy)
+                	{
+                		Utilities.changeRoom(player,  -1 * Constants.LEFT, board.getMap());
+                		System.out.println("Oops room is locked");
+                	}
+                }
             }
             if (x.equals("down"))
             {
@@ -49,7 +57,8 @@ public class GameRunner {
             {
             	if (player.getRoom().getOccupants()[i] instanceof Enemy)
             	{
-            		//Utilities.fight(player, player.getRoom().getOccupants()[i]);
+            		Utilities.changeRoom(player,  -1 * Constants.LEFT, board.getMap());
+            		System.out.println("Oops room is locked");
             	}
             }
             board.printMap();

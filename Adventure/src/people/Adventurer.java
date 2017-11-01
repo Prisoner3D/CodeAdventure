@@ -10,8 +10,8 @@ public class Adventurer extends Person {
 	private Room room;
 	private int level;
 	
-	public Adventurer(String firstName, String familyName, int age, Room room, int level) {
-		super(firstName, familyName, age, room);
+	public Adventurer(String firstName, String familyName, Room room, Room prevRoom, int level, int money) {
+		super(firstName, familyName, room, prevRoom, level, money);
 		this.level = level;
 	}
 

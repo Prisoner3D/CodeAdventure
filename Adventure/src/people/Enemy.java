@@ -4,12 +4,10 @@ import rooms.Room;
 
 public class Enemy extends Person{
 	private String about;
-	private int level;
 	
-	public Enemy(String firstName, String familyName, int age, Room room, String about, int level) {
-		super(firstName, familyName, age, room);
+	public Enemy(String firstName, String familyName, Room room, Room prevRoom ,String about, int level, int money) {
+		super(firstName, familyName, room, prevRoom, level, money);
 		this.about = about;
-		this.level = level;
 	}
 	
 	public String print() {

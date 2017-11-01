@@ -26,7 +26,8 @@ public class Utilities {
             for (int i = 0; i < row.length;i++)
             {
                 boolean[] doors = {true,true,true,true};
-                Person[] people = {};//new Enemy("Billy", "Joe", 20, row[i], "I'm an enemy!")};
+                Person[] people = {new Enemy("Billy", "Joe", row[i] , row[i], "I'm an enemy!", 0, 10)};
+                System.out.println(people[0].getLevel());
                 Item[] items = {};
 
                 if (i == x && j == y)
@@ -40,7 +41,7 @@ public class Utilities {
         }
 		return definedMap;
     }
-	public static void changeRoom(Person player, int direction, Room[][] map)
+	public static void changeRoom(Person player, int direction, Room[][] map) //Change so it calls check combat, if so then move.
 	{
 		Room current = player.getRoom();
 		int x = current.getX();
@@ -77,8 +78,13 @@ public class Utilities {
 		}
 		player.getRoom().removeLastPerson();
 		map[newY][newX].addOccupant(player);
+		player.setPrevRoom(map[y][x]);
     	player.setRoom(map[newY][newX]);
     	System.out.println(newX + "," + newY);
 	}
 	
+	public static void changeToPrev(Person player)
+	{
+		player.setRoom(player.getPrevRoom());
+	}
 }
