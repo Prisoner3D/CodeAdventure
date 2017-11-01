@@ -17,21 +17,23 @@ import rooms.Room;
 
 public class Utilities {
 	
-	public static Room[][] generateDefaultMap(Person player)
+	public static Room[][] generateDefaultMap(Person player, int x, int y)
     {
-    	Room[][] definedMap = new Room[5][5];
+    	Room[][] definedMap = new Room[5][8];
         for (int j = 0; j < definedMap.length; j++)
         {
         	Room[] row = definedMap[j];
-            for (int i = 0; i<row.length;i++)
+            for (int i = 0; i < row.length;i++)
             {
                 boolean[] doors = {true,true,true,true};
-                Person[] people = {new Enemy("Billy", "Joe", 20, row[i], "I'm an enemy!")};
+                Person[] people = {};//new Enemy("Billy", "Joe", 20, row[i], "I'm an enemy!")};
                 Item[] items = {};
 
-                if (i == 1 && j == 2)
+                if (i == x && j == y)
                 {
                 	people = new Person[] {player};
+                	player.setRoom(definedMap[i][j]);
+                	System.out.println(i + "," + j);
                 }
                 row[i] = new Road(doors, people, items, i, j);
             }
@@ -43,90 +45,40 @@ public class Utilities {
 		Room current = player.getRoom();
 		int x = current.getX();
 		int y = current.getY();
-		int newX;
-		int newY;
-		switch(direction)
+		int newX = x;
+		int newY = y;
+		if (direction == Constants.UP)
 		{
-			case(Constants.UP):
-				newX = x;
-				newY = y-1;
-				removeLastPerson(current.getOccupants());
-				for (int j = 0; j < map.length; j++)
-		        {
-		        	Room[] row = map[j];
-		            for (int i = 0; i < row.length;i++)
-		            {
-		                if (j == newY && i == newX)
-		                {
-		                	addPerson(player, row[i].getOccupants());
-		                }
-		            }
-		        }
-			case(Constants.DOWN):
-				newX = x;
-				newY = y+1;
-				removeLastPerson(current.getOccupants());
-				for (int j = 0; j < map.length; j++)
-		        {
-		        	Room[] row = map[j];
-		            for (int i = 0; i < row.length;i++)
-		            {
-		                if (j == newY && i == newX)
-		                {
-		                	addPerson(player, row[i].getOccupants());
-		                }
-		            }
-		        }
-			case(Constants.LEFT):
-				newX = x - 1;
-				newY = y;
-				removeLastPerson(current.getOccupants());
-				for (int j = 0; j < map.length; j++)
-		        {
-		        	Room[] row = map[j];
-		            for (int i = 0; i < row.length;i++)
-		            {
-		                if (j == newY && i == newX)
-		                {
-		                	addPerson(player, row[i].getOccupants());
-		                }
-		            }
-		        }
-			case(Constants.RIGHT):
-				newX = x + 1;
-				newY = y;
-				removeLastPerson(current.getOccupants());
-				for (int j = 0; j < map.length; j++)
-		        {
-		        	Room[] row = map[j];
-		            for (int i = 0; i < row.length;i++)
-		            {
-		                if (j == newY && i == newX)
-		                {
-		                	addPerson(player, row[i].getOccupants());
-		                }
-		            }
-		        }
+			newX = x;
+			newY = y - 1;
 		}
-		
-	}
-	public static void removeLastPerson(Person[] room)
-	{
-		Person[] replace = new Person[room.length - 1];
-		for (int i = 0; i < replace.length; i++)
+		else if (direction == Constants.DOWN)
 		{
-			replace[i] = room[i];
+			newX = x;
+			newY = y + 1;
 		}
-		room = replace;
-	}
-	public static void addPerson(Person addition, Person[] room)
-	{
-		Person[] replace = new Person[room.length + 1];
-		for (int i = 0; i < replace.length; i++)
+		else if (direction == Constants.LEFT)
 		{
-			replace[i] = room[i];
+			newX = x - 1;
+			newY = y;
 		}
-		replace[replace.length - 1] = addition;
-		room = replace;
+		else if (direction == Constants.RIGHT)
+		{
+			newX = x + 1;
+			newY = y;
+		}
+		if (newX > map[0].length - 1|| newX < 0)
+		{
+			newX = x;
+		}
+		if (newY > map.length - 1 || newY < 0)
+		{
+			newY = y;
+		}
+		player.getRoom().removeLastPerson();
+		map[newY][newX].addOccupant(player);
+    	player.setRoom(map[newY][newX]);
+    	System.out.println(newX + "," + newY);
 	}
+	
 }

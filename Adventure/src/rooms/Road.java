@@ -15,7 +15,7 @@ public class Road extends Room {
     {
         if (getOccupants().length != 0)
         {
-            System.out.print(getOccupants()[0].print());
+            System.out.print(getOccupants()[getOccupants().length-1].print());
         } 
         else if (this.explored)
         {

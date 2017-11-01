@@ -55,5 +55,25 @@ public abstract class Room {
     	return y;
     }
     
+    public void removeLastPerson()
+	{
+		Person[] replace = new Person[this.occupants.length - 1];
+		for (int i = 0; i < replace.length; i++)
+		{
+			replace[i] = this.getOccupants()[i];
+		}
+		this.occupants = replace;
+	}
+	public void addPerson(Person addition)
+	{
+		Person[] replace = new Person[this.occupants.length + 1];
+		for (int i = 0; i < replace.length; i++)
+		{
+			replace[i] = this.occupants[i];
+		}
+		replace[replace.length - 1] = addition;
+		this.occupants = replace;
+	}
+    
     public abstract void print();
 }

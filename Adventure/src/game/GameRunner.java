@@ -5,6 +5,7 @@ import rooms.*;
 import utilities.Constants;
 import utilities.Utilities;
 import people.Adventurer;
+import people.Enemy;
 import people.Person;
 
 import java.util.Scanner;
@@ -15,76 +16,47 @@ public class GameRunner {
 
     public static void main (String[] args)
     {
-    	Person player = new Adventurer("First", "Last", 123, null);
-        Room[][] definedMap = Utilities.generateDefaultMap(player);
+    	Person player = new Adventurer("First", "Last", 123, null, 0);
+        Room[][] definedMap = Utilities.generateDefaultMap(player,Constants.DEFAULT_X,Constants.DEFAULT_Y);
+        player.setRoom(definedMap[Constants.DEFAULT_X][Constants.DEFAULT_Y]);
         Board board = new Board(definedMap);
-        
         boolean gameOn = true;
         
         
         Scanner in = new Scanner(System.in);
+        System.out.println("Welcome, to a house where you are locked. ! represents an enemy in the room, * represents your character."); //Add name later.getFirstName());
+        board.printMap();
         while(gameOn)
         {
-            System.out.println("Welcome, "); //Add name later.getFirstName());
-            board.printMap();
             String x = in.nextLine();
             if (x.equals("up"))
             {
-            	Utilities.changeRoom(player, Constants.UP, board.getmap());
+            	Utilities.changeRoom(player, Constants.UP, board.getMap());
             }
-	    if (x.equals("down"))
+            if (x.equals("down"))
             {
-            	Utilities.changeRoom(player, Constants.DOWN, board.getmap());
+            	Utilities.changeRoom(player, Constants.DOWN, board.getMap());
             }
-	    if (x.equals("left"))
+            if (x.equals("left"))
             {
-            	Utilities.changeRoom(player, Constants.LEFT, board.getmap());
+            	Utilities.changeRoom(player, Constants.LEFT, board.getMap());
             }
-	    if (x.equals("right"))
+            if (x.equals("right"))
             {
-            	Utilities.changeRoom(player, Constants.RIGHT, board.getmap());
+            	Utilities.changeRoom(player, Constants.RIGHT, board.getMap());
             }
+            for (int i = 0; i < player.getRoom().getOccupants().length;i++)
+            {
+            	if (player.getRoom().getOccupants()[i] instanceof Enemy)
+            	{
+            		//Utilities.fight(player, player.getRoom().getOccupants()[i]);
+            	}
+            }
+            board.printMap();
             //gameOn = false;
 
         }
 		in.close();
-        		/*
-        for (int j = 0; j < definedMap.length; j++)
-        {
-        	Room[] row = definedMap[j];
-            for (int i = 0; i<row.length;i++)
-            {
-                boolean[] doors = {true,true,true,true};
-                Person[] people = {};
-                Item[] items = {};
-                
-                row[i] = new Road(doors, people, items, i, j);
-                row[i].print();
-            }
-            System.out.println();
-
-        } */
-/*
-        School tech = new School(map);
-
-
-        boolean gameOn = true;
-        Person player1 = Utilities.createPerson();
-        Scanner in = new Scanner(System.in);
-        while(gameOn)
-        {
-            System.out.println("Welcome to the Halls of Tech, " + player1.getFirstName());
-            map[0][0].addOccupant(player1);
-
-            tech.printMap();
-            player1.printRoom();
-            String move = player1.chooseMove();
-            Utilities.movePlayer(tech, player1,move);
-            //gameOn = false;
-
-        }
-		in.close();
-		*/
     }
 
 }

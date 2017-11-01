@@ -21,7 +21,7 @@ public class Board {
             System.out.println();
         }
     }
-    public Room[][] getmap() {
+    public Room[][] getMap() {
         return map;
     }
 
