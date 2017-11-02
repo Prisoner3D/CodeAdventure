@@ -1,5 +1,6 @@
 package rooms;
 
+import people.Enemy;
 import people.Person;
 import items.Item;
 
@@ -54,6 +55,20 @@ public abstract class Room {
     {
     	return y;
     }
+    
+    public void removeEnemy()
+	{
+		Person[] replace = new Person[this.occupants.length - 1];
+		for (int i = 0; i < replace.length; i++)
+		{
+			if (this.getOccupants()[i] instanceof Enemy)
+			{
+				continue;
+			}
+			replace[i] = this.getOccupants()[i];
+		}
+		this.occupants = replace;
+	}
     
     public void removeLastPerson()
 	{

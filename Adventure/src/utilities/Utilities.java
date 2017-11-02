@@ -10,6 +10,7 @@ import items.Item;
 import people.Adventurer;
 import people.Enemy;
 import people.Person;
+import people.StoreOwner;
 import rooms.House;
 import rooms.Park;
 import rooms.Road;
@@ -36,9 +37,18 @@ public class Utilities {
                 	player.setRoom(definedMap[i][j]);
                 	//System.out.println(i + "," + j);
                 }
+                if (i == 0 && j == 0)
+                {
+                	people = new Person[] {new StoreOwner("Store", "Owner", row[i], "I own a store.")};
+                	player.setRoom(definedMap[i][j]);
+                	//System.out.println(i + "," + j);
+                }
                 row[i] = new Road(doors, people, items, i, j);
+                row[i].getOccupants()[0].setRoom(row[i]);
+                row[i].getOccupants()[0].setPrevRoom(row[i]);
             }
         }
+        definedMap[0][0].getOccupants()[0].setRoom(definedMap[0][0]);
 		return definedMap;
     }
 	public static void changeRoom(Person player, int direction, Room[][] map) //Change so it calls check combat, if so then move.
@@ -62,20 +72,6 @@ public class Utilities {
 		{
 			newX = x - 1;
 			newY = y;
-			for (int i = 0; i < player.getRoom().getOccupants().length;i++)
-            {
-            	if (player.getRoom().getOccupants()[i] instanceof Enemy)
-            	{
-            		if (fight(player,player.getRoom().getOccupants()[i]) == null)
-            		{
-            			break;
-            		}
-            		newX = x;
-            		newY = y;
-            		//if return is null,  set newX and newY to x and y respectively.
-            		System.out.println("Oops room is locked");
-            	}
-            }
 		}
 		else if (direction == Constants.RIGHT)
 		{
@@ -90,6 +86,26 @@ public class Utilities {
 		{
 			newY = y;
 		}
+		for (int i = 0; i < map[newY][newX].getOccupants().length;i++)
+        {
+        	if (map[newY][newX].getOccupants()[i] instanceof Enemy)
+        	{
+        		System.out.println("hello");
+        		if (fight(player,map[newY][newX].getOccupants()[i]) == player)
+        		{
+        			break;
+        		}
+        		newX = x;
+        		newY = y;
+        		//if return is null,  set newX and newY to x and y respectively.
+        		System.out.println("AHH You run out as the enemy is too powerful.");
+        	}
+        	else if (map[newY][newX].getOccupants()[i] instanceof StoreOwner)
+        	{
+        		System.out.println("hello");
+        		//InitiateStore
+        	}
+        }
 		player.getRoom().removeLastPerson();
 		map[newY][newX].addOccupant(player);
 		player.setPrevRoom(map[y][x]);
@@ -107,12 +123,14 @@ public class Utilities {
 	public static Person fight(Person player1, Person player2) {
 		if (player1.getLevel() >= player2.getLevel())
 		{
-			return player1;
+			player1.setMoney(player1.getMoney()+player2.getMoney());
+			System.out.println(player1.getMoney());
+			player2.getRoom().removeEnemy();
+			return player1; //Player1 wins?
+			
 		}
 		else
 		{
-			//should delete player2 player2
-			player2.delete();
 			return null;
 		}
 	}

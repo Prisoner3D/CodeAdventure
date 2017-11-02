@@ -10,18 +10,6 @@ public class Enemy extends Person{
 		this.about = about;
 	}
 	
-	public void delete()
-	{
-		for(int x = 0; x < this.getRoom().getOccupants().length; i++)
-		{
-			if (this.getRoom().getOccupants()[i] == (Person)this)
-			{
-				x = 
-			}
-		}
-			
-	}
-	
 	public String print() {
 		return "[ ! ]";
 	}

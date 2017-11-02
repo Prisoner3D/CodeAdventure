@@ -1,5 +1,5 @@
 package utilities;
 
-public interface Fight {
+public interface Buying {
 	
 }

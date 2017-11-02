@@ -34,6 +34,14 @@ public abstract class Person {
 		this.room = room;
 	}
 	
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	
 	public Room getPrevRoom() {
 		return this.prevRoom;
 	}

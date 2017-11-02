@@ -45,14 +45,6 @@ public class GameRunner {
             {
             	Utilities.changeRoom(player, Constants.RIGHT, board.getMap());
             }
-            for (int i = 0; i < player.getRoom().getOccupants().length;i++)
-            {
-            	if (player.getRoom().getOccupants()[i] instanceof Enemy)
-            	{
-            		//Utilities.changeRoom(player,  -1 * Constants.LEFT, board.getMap());
-            		//System.out.println("Oops room is locked");
-            	}
-            }
             board.printMap();
             //gameOn = false;
 
