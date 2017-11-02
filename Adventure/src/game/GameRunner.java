@@ -14,42 +14,53 @@ import board.Board;
 
 public class GameRunner {
 
+	//To Do
+	// ITEMS: Weapons, Clues
+	// Shop upgrade
+	//Storyline
+	//Board constructor - combine
+	//comments
     public static void main (String[] args)
     {
-    	Person player = new Adventurer("First", "Last", null, null, 0, 0);
-        Room[][] definedMap = Utilities.generateDefaultMap(player,Constants.DEFAULT_X,Constants.DEFAULT_Y);
-        player.setRoom(definedMap[Constants.DEFAULT_X][Constants.DEFAULT_Y]);
-        Board board = new Board(definedMap);
-        boolean gameOn = true;
-        
-        
-        Scanner in = new Scanner(System.in);
-        System.out.println("Welcome, to a house where you are locked. ! represents an enemy in the room, * represents your character."); //Add name later.getFirstName());
-        board.printMap();
-        while(gameOn)
-        {
-            String x = in.nextLine();
-            if (x.equals("up"))
-            {
-            	Utilities.changeRoom(player, Constants.UP, board.getMap());
-            }
-            if (x.equals("down"))
-            {
-            	Utilities.changeRoom(player, Constants.DOWN, board.getMap());
-            }
-            if (x.equals("left"))
-            {
-            	Utilities.changeRoom(player, Constants.LEFT, board.getMap());
-            }
-            if (x.equals("right"))
-            {
-            	Utilities.changeRoom(player, Constants.RIGHT, board.getMap());
-            }
-            board.printMap();
-            //gameOn = false;
+    	try {
+			Person player = new Adventurer("First", "Last", null, null, 0, 0);
+			Room[][] definedMap = Utilities.generateDefaultMap(player,Constants.DEFAULT_X,Constants.DEFAULT_Y);
+			player.setRoom(definedMap[Constants.DEFAULT_X][Constants.DEFAULT_Y]);
+			Board board = new Board(definedMap);
+			boolean gameOn = true;
+			
+			
+			Scanner in = new Scanner(System.in);
+			System.out.println("Welcome, to a house where you are locked. ! represents an enemy in the room, * represents your character."); //Add name later.getFirstName());
+			board.printMap();
+			while(gameOn)
+			{
+			    String x = in.nextLine();
+			    if (x.equals("up"))
+			    {
+			    	Utilities.changeRoom(player, Constants.UP, board.getMap());
+			    }
+			    if (x.equals("down"))
+			    {
+			    	Utilities.changeRoom(player, Constants.DOWN, board.getMap());
+			    }
+			    if (x.equals("left"))
+			    {
+			    	Utilities.changeRoom(player, Constants.LEFT, board.getMap());
+			    }
+			    if (x.equals("right"))
+			    {
+			    	Utilities.changeRoom(player, Constants.RIGHT, board.getMap());
+			    }
+			    board.printMap();
+			    //gameOn = false;
 
-        }
-		in.close();
+			}
+			in.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
 }

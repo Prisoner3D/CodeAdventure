@@ -1,19 +1,16 @@
 package items;
 
-public abstract class Item {
-	private String name;
-	private String about;
-	private boolean decoy;
+import people.Person;
+
+public interface Item {
+
+	void printAbout();
 	
-	public Item(String name, String about, boolean decoy)
-	{
-		this.name = name;
-		this.about = about;
-		this.decoy = decoy;
-	}
+	void useItem();
 	
-	public String getAbout()
-	{
-		return about;
-	}
+	void tossItem();
+	
+	//void redundantMethod();
+	
+	void useItem(Person person);
 }
