@@ -58,4 +58,9 @@ public abstract class Person {
 	public String print() {
 		return "";
 	}
+
+	public void setLevel(int level) {
+		this.level = level;
+		
+	}
 }

@@ -1,31 +1,34 @@
 package rooms;
 
 import people.Person;
+import utilities.Constants;
 import items.Item;
 
 public class Road extends Room {
 
-    public Road(boolean[] doors, Person[] people, Item[] items, int x, int y)
+    public Road(Person[] people, Item[] items, int x, int y, boolean explored)
     {
-        super(doors, people, items, x, y);
+        super(Constants.ALL_DOORS, people, items, x, y, explored);
     }
 
 	@Override
-    public void print()
+	public void print()
     {
-        if (getOccupants().length != 0)
+		if (this.explored)
         {
-            System.out.print(getOccupants()[getOccupants().length-1].print());
-        } 
-        else if (this.explored)
-        {
-            System.out.print("[ X ]");
+			if (getOccupants().length != 0)
+	        {
+	            System.out.print(getOccupants()[0].print());
+	        } 
+			else
+			{
+				System.out.print("[ X ]");
+			}
         }
         else
         {
             System.out.print("[   ]");
         }
-
     }
     
     public String toString()

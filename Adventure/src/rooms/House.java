@@ -5,25 +5,27 @@ import people.Person;
 
 public class House extends Room {
 
-	public House(boolean[] doors, Person[] occupants, Item[] items, int x, int y) {
-		super(doors, occupants, items, x, y);
+	public House(boolean[] doors, Person[] occupants, Item[] items, int x, int y, boolean explored) {
+		super(doors, occupants, items, x, y, explored);
 	}
 
 	@Override
 	public void print()
-    { 
-        if (getOccupants().length != 0)
+    {
+		if (this.explored)
         {
-            System.out.print(getOccupants()[0].print());
-        } 
-        if (this.explored)
-        {
-            System.out.print("[ H ]");
+			if (getOccupants().length != 0)
+	        {
+	            System.out.print(getOccupants()[0].print());
+	        } 
+			else
+			{
+				System.out.print("[ H ]");
+			}
         }
         else
         {
             System.out.print("[   ]");
         }
-
     }
 }

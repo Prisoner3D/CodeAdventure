@@ -11,17 +11,17 @@ public abstract class Room {
     private boolean[] doors;
     private Person[] occupants;
     private Item[] items;
-    public boolean explored;
+    protected boolean explored;
     private int x, y;
 
-    public Room (boolean[] doors, Person[] occupants, Item[] items, int x, int y)
+    public Room (boolean[] doors, Person[] occupants, Item[] items, int x, int y, boolean explored)
     {
     	this.x = x;
     	this.y = y;
         this.doors = doors;
         this.occupants = occupants;
         this.items = items;
-        this.explored = true;
+        this.explored = explored;
     }
 
     public Person[] getOccupants() 
@@ -39,6 +39,11 @@ public abstract class Room {
         this.occupants = Arrays.copyOf(this.occupants,this.occupants.length+1);
         this.occupants[this.occupants.length-1] = p;
         p.setRoom(this);
+    }
+    
+    public void setExplored(boolean explored) 
+    {
+        this.explored = explored;
     }
     
     public boolean[] getDoors()

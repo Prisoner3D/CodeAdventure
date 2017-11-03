@@ -20,39 +20,47 @@ public class GameRunner {
 	//Storyline
 	//Board constructor - combine
 	//comments
+	//doors
     public static void main (String[] args)
     {
     	try {
 			Person player = new Adventurer("First", "Last", null, null, 0, 0);
-			Room[][] definedMap = Utilities.generateDefaultMap(player,Constants.DEFAULT_X,Constants.DEFAULT_Y);
+			Room[][] definedMap = Utilities.generateDefaultMap(player);
 			player.setRoom(definedMap[Constants.DEFAULT_X][Constants.DEFAULT_Y]);
 			Board board = new Board(definedMap);
 			boolean gameOn = true;
 			
 			
 			Scanner in = new Scanner(System.in);
-			System.out.println("Welcome, to a house where you are locked. ! represents an enemy in the room, * represents your character."); //Add name later.getFirstName());
+			System.out.println("You wake up on the street. You are alone. You have nothing. You don't know here you are."); //Add name later.getFirstName());
 			board.printMap();
+			Utilities.printLegend(player);
+			
 			while(gameOn)
 			{
 			    String x = in.nextLine();
-			    if (x.equals("up"))
+			    if (x.contains("up"))
 			    {
 			    	Utilities.changeRoom(player, Constants.UP, board.getMap());
 			    }
-			    if (x.equals("down"))
+			    else if (x.contains("down"))
 			    {
 			    	Utilities.changeRoom(player, Constants.DOWN, board.getMap());
 			    }
-			    if (x.equals("left"))
+			    else if (x.contains("left"))
 			    {
 			    	Utilities.changeRoom(player, Constants.LEFT, board.getMap());
 			    }
-			    if (x.equals("right"))
+			    else if (x.contains("right"))
 			    {
 			    	Utilities.changeRoom(player, Constants.RIGHT, board.getMap());
 			    }
+			    else
+			    {
+			    	System.out.println("You are confused and are unable to complete that action.");
+			    }
 			    board.printMap();
+			    Utilities.printLegend(player);
 			    //gameOn = false;
 
 			}

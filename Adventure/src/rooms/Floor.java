@@ -3,10 +3,12 @@ package rooms;
 import items.Item;
 import people.Person;
 
+//MIGHT SCRAP
+//For 3D Map
 public class Floor extends Room {
 	
-	public Floor(boolean[] doors, Person[] occupants, Item[] items, int x, int y) {
-		super(doors, occupants, items, x, y);
+	public Floor(boolean[] doors, Person[] occupants, Item[] items, int x, int y, boolean explored) {
+		super(doors, occupants, items, x, y, explored);
 	}
 
 	@Override
