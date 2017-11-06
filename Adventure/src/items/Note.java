@@ -3,7 +3,10 @@ package items;
 import people.Person;
 
 public class Note extends Clue{
-
+	/**
+	 * Note - A note found in a room that drives the story.
+	 * @author Thomas Zhou
+	 */
 	public Note(String name, String about) {
 		super(name, about);
 		// TODO Auto-generated constructor stub

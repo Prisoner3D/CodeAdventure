@@ -4,6 +4,10 @@ import items.Item;
 import people.Person;
 
 public class Store extends Room{
+	/*
+	 * Room that houses a store owner and allows store transactions.
+	 * @author Thomas Zhou
+	 */
 
 	public Store(boolean[] doors, Person[] occupants, Item[] items, int x, int y, boolean explored) {
 		super(doors, occupants, items, x, y, explored);

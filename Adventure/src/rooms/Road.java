@@ -5,6 +5,11 @@ import utilities.Constants;
 import items.Item;
 
 public class Road extends Room {
+	/*
+	 * Regular street
+	 * Contains regular enemy
+	 * @author Thomas Zhou
+	 */
 
     public Road(Person[] people, Item[] items, int x, int y, boolean explored)
     {

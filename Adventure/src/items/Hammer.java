@@ -3,8 +3,16 @@ package items;
 import people.Person;
 
 public class Hammer extends Weapon{
-
-	public Hammer(String name, String about, int price, int power) {
+	/**
+	 * Hammer - Used to beat the Enemy Brutes.
+	 * @author Thomas Zhou
+	 */
+	private static String name = "Hammer";
+	private static String about = "It can hit stuff!";
+	private static int price = 50;
+	private static int power = 1;
+	
+	public Hammer() {
 		super(name, about, price, power);
 		// TODO Auto-generated constructor stub
 	}

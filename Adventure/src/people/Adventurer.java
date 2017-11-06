@@ -1,20 +1,19 @@
 package people;
 
+import java.util.List;
+
+import items.Item;
 import rooms.Room;
 
 public class Adventurer extends Person {
-
-	private String firstName;
-	private String familyName;
-	private int age;
-	private Room room;
-	private int level;
-	
-	public Adventurer(String firstName, String familyName, Room room, Room prevRoom, int level, int money) {
-		super(firstName, familyName, room, prevRoom, level, money);
-		this.level = level;
+	/**
+	 * Adventurer - The player
+	 * @author Thomas Zhou
+	 */
+	public Adventurer(String firstName, String familyName, Room room, Room prevRoom, List<Item> items, int money) {
+		super(firstName, familyName, room, prevRoom, items, money);
 	}
-
+	
 	public String print() {
 		return "[ * ]";
 	}

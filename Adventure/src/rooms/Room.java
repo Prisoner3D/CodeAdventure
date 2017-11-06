@@ -7,6 +7,10 @@ import items.Item;
 import java.util.Arrays;
 
 public abstract class Room {
+	/*
+	 * Abstract class for each room.
+	 * @author Thomas Zhou
+	 */
 
     private boolean[] doors;
     private Person[] occupants;

@@ -1,6 +1,10 @@
 package items;
 
 public abstract class Weapon implements Item{
+	/**
+	 * Abstract class for weapons, which are used by the user.
+	 * @author Thomas Zhou
+	 */
 	private String name;
 	private String about;
 	private int price;
@@ -11,7 +15,7 @@ public abstract class Weapon implements Item{
 		this.setPrice(price);
 		this.setPower(power);
 	}
-	
+
 	public String getName()
 	{
 		return name;

@@ -3,8 +3,12 @@ package rooms;
 import items.Item;
 import people.Person;
 
-//MIGHT SCRAP
 public class Park extends Room{
+	/*
+	 * Meant as an extra room.
+	 * Currently not used.
+	 * @author Thomas Zhou
+	 */
 
 	public Park(boolean[] doors, Person[] occupants, Item[] items, int x, int y, boolean explored) {
 		super(doors, occupants, items, x, y, explored);

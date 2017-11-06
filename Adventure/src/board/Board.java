@@ -4,7 +4,7 @@ import rooms.Room;
 
 public class Board {
     private Room[][] map;
-
+    
     public Board(Room[][] map)
     {
         this.map = map;

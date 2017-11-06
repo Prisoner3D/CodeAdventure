@@ -4,6 +4,11 @@ import items.Item;
 import people.Person;
 
 public class House extends Room {
+	/*
+	 * House - Contains an enemy brute and a clue possibly.
+	 * Clue not added currently.
+	 * @author Thomas Zhou
+	 */
 
 	public House(boolean[] doors, Person[] occupants, Item[] items, int x, int y, boolean explored) {
 		super(doors, occupants, items, x, y, explored);

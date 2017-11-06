@@ -1,29 +1,36 @@
 package people;
 
+import java.util.List;
+
+import items.Item;
 import rooms.Room;
 
 public abstract class Person {
+	/*
+	 * Abstract class for each person.
+	 * @author Thomas Zhou
+	 */
 	
 	private String firstName;
 	private String familyName;
 	private Room room;
 	private Room prevRoom;
-	private int level;
+	private List<Item> items;
 	private int money;
 	
-	public Person(String firstName, String familyName, Room room, Room prevRoom, int level, int money)
+	public Person(String firstName, String familyName, Room room, Room prevRoom, List<Item> items, int money)
 	{
-		this.firstName = firstName;
-		this.familyName = familyName;
+		this.setFirstName(firstName);
+		this.setFamilyName(familyName);
 		this.prevRoom = room;
 		this.room = room;
-		this.level = level;
+		this.items = items;
 		this.money = money;
 	}
 
-	public int getLevel()
+	public List<Item> getItems()
 	{
-		return this.level;
+		return items;
 	}
 	
 	public Room getRoom() {
@@ -52,15 +59,36 @@ public abstract class Person {
 
 	public String toString()
 	{
-		return "" + firstName + familyName + level + money + room.toString();
+		return "" + getFirstName() + getFamilyName() + items + money + room.toString();
 	}
 
 	public String print() {
 		return "";
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
-		
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getFamilyName() {
+		return familyName;
+	}
+
+	public void setFamilyName(String familyName) {
+		this.familyName = familyName;
+	}
+	
+	public void addItem(Item item)
+	{
+		items.add(item);
+	}
+
+	public void removeItem(Item item)
+	{
+		items.remove(item);
 	}
 }

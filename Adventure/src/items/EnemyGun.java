@@ -2,16 +2,18 @@ package items;
 
 import people.Person;
 
-public class Poster extends Clue{
+public class EnemyGun extends Weapon {
 	/**
-	 * Poster - A poster found in a room that drives the story.
+	 * Enemy Gun used by the Enemy Boss only.
 	 * @author Thomas Zhou
 	 */
-	private static String name = "Note";
-	private static String about = "You see a poster with 'Only way out is death...'";
+	private static String name = "Gun";
+	private static String about = "Enemy gun!";
+	private static int price = 999;
+	private static int power = 2;
 	
-	public Poster(String name, String about) {
-		super(name, about);
+	public EnemyGun() {
+		super(name, about, price, power);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -39,4 +41,9 @@ public class Poster extends Clue{
 		
 	}
 
+	@Override
+	public void printDescription() {
+		// TODO Auto-generated method stub
+		
+	}
 }
